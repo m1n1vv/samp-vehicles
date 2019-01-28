@@ -10,6 +10,7 @@
 enum
 	pol_inf
 	{
+        bool:pi_police,
 		pi_top,
 		pi_objects,
 		pi_flashers
@@ -52,18 +53,15 @@ stock CreatePoliceInfernus(Float:x, Float:y, Float:z, Float:a, respawn = 0)
 
 	police_infernus[vehicleid][pi_top] = objectid;
 
+    police_infernus[vehicleid][pi_police] = true;
+
 	return vehicleid;
 
 }
 
 public OnVehicleSirenStateChange(playerid, vehicleid, newstate)
 {
-	static
-		modelid;
-
-	modelid = GetVehicleModel(vehicleid);
-
-	if (modelid == INFERNUS)
+	if (police_infernus[vehicleid][pi_police])
 	{
 		if (newstate) 
 		{
@@ -172,6 +170,8 @@ stock DestroyPoliceInfernus(vehicleid)
 	DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+2);
 
 	DestroyDynamicObject(police_infernus[vehicleid][pi_top]);
+
+    police_infernus[vehicleid][pi_police] = false;
 
 	return 1;
 }
