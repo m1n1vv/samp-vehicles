@@ -43,7 +43,7 @@ stock CreatePoliceInfernus(Float:x, Float:y, Float:z, Float:a, respawn = 0)
 	AttachDynamicObjectToVehicle(objectid, vehicleid, 0.778895, -2.520503, -0.455543, 202.600015, 0.000000, 4.399932);
 
 	objectid = CreateDynamicObject(19620, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000); //+2
-	SetDynamicObjectMaterial(objectid, 0, 19620, "LightBar1", "lightbar1", 0xFFFFFFFF);
+	SetDynamicObjectMaterial(objectid, 0, 19620, !"LightBar1", !"lightbar1", 0xFFFFFFFF);
 	AttachDynamicObjectToVehicle(objectid, vehicleid, -0.000567, 0.159840, 0.709995, 0.000000, 0.000000, 0.000000);
 
 	police_infernus[vehicleid][pi_top] = objectid;
