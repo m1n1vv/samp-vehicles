@@ -6,7 +6,7 @@
 enum
 	pol_inf
 	{
-        pi_top,
+		pi_top,
 		pi_objects,
 		pi_flashers
 	};
@@ -42,11 +42,11 @@ stock CreatePoliceInfernus(Float:x, Float:y, Float:z, Float:a, respawn = 0)
 	objectid = CreateDynamicObject(19797, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000); //+5
 	AttachDynamicObjectToVehicle(objectid, vehicleid, 0.778895, -2.520503, -0.455543, 202.600015, 0.000000, 4.399932);
 
-    objectid = CreateDynamicObject(19620, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000); //+2
-    SetDynamicObjectMaterial(objectid, 0, 19620, "LightBar1", "lightbar1", 0xFFFFFFFF);
-    AttachDynamicObjectToVehicle(objectid, vehicleid, -0.000567, 0.159840, 0.709995, 0.000000, 0.000000, 0.000000);
+	objectid = CreateDynamicObject(19620, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000); //+2
+	SetDynamicObjectMaterial(objectid, 0, 19620, "LightBar1", "lightbar1", 0xFFFFFFFF);
+	AttachDynamicObjectToVehicle(objectid, vehicleid, -0.000567, 0.159840, 0.709995, 0.000000, 0.000000, 0.000000);
 
-    police_infernus[vehicleid][pi_top] = objectid;
+	police_infernus[vehicleid][pi_top] = objectid;
 
 	return vehicleid;
 
@@ -56,8 +56,8 @@ public OnVehicleSirenStateChange(playerid, vehicleid, newstate)
 {
 	if (newstate) 
 	{
-        static
-            objectid;
+		static
+			objectid;
 
 		objectid = CreateDynamicObject(19419, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000);
 		SetDynamicObjectMaterialText(objectid, 0, !"_", 130, !"Arial", 60, 0, 0, 0, 1);
@@ -81,9 +81,9 @@ public OnVehicleSirenStateChange(playerid, vehicleid, newstate)
 		AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+4, vehicleid, -0.778895, -2.520503, -0.455543, 22.600015, 0.000000, -4.399932);
 		AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+5, vehicleid, 0.778895, -2.520503, -0.455543, 22.600015, 0.000000, 4.399932);
 
-        SetVehicleParamsEx(vehicleid, 1, 1, 0, 0, 0, 0, 0);
+		SetVehicleParamsEx(vehicleid, 1, 1, 0, 0, 0, 0, 0);
 
-        Streamer_Update(playerid, STREAMER_TYPE_OBJECT);
+		Streamer_Update(playerid, STREAMER_TYPE_OBJECT);
 	}
 	else 
 	{
@@ -109,57 +109,57 @@ public OnVehicleSirenStateChange(playerid, vehicleid, newstate)
 
 public OnVehicleDeath(vehicleid, killerid)
 {
-    PoliceInfernusToOff(vehicleid);
-    
-    #if  defined pi_OnVehicleDeath
-        pi_OnVehicleDeath(vehicleid, killerid);
-    #endif
+	PoliceInfernusToOff(vehicleid);
+	
+	#if  defined pi_OnVehicleDeath
+		pi_OnVehicleDeath(vehicleid, killerid);
+	#endif
 
-    return 1;
+	return 1;
 }
 
 #if defined _ALS_OnVehicleDeath
-    #undef  OnVehicleDeath
+	#undef  OnVehicleDeath
 #else
-    #define _ALS_OnVehicleDeath
+	#define _ALS_OnVehicleDeath
 #endif
 #define OnVehicleDeath  pi_OnVehicleDeath
 #if defined pi_OnVehicleDeath
-    forward pi_OnVehicleDeath(vehicleid, killerid);
+	forward pi_OnVehicleDeath(vehicleid, killerid);
 #endif
 
 static stock PoliceInfernusToOff(vehicleid)
 {
-    DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+1);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+2);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+1);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+2);
 
-    SetDynamicObjectMaterial(police_infernus[vehicleid][pi_top], 0, 19620, "LightBar1", "lightbar1", 0xFFFFFFFF);
+	SetDynamicObjectMaterial(police_infernus[vehicleid][pi_top], 0, 19620, "LightBar1", "lightbar1", 0xFFFFFFFF);
 
-    AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+2, vehicleid, -0.623635, 2.719873, -0.489997, 197.100002, 0.000000, -168.299880);
-    AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+3, vehicleid, 0.623635, 2.719873, -0.489997, 197.100002, 0.000000, 168.299880);
-    AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+4, vehicleid, -0.778895, -2.520503, -0.455543, 202.600015, 0.000000, -4.399932);
-    AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+5, vehicleid, 0.778895, -2.520503, -0.455543, 202.600015, 0.000000, 4.399932);
+	AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+2, vehicleid, -0.623635, 2.719873, -0.489997, 197.100002, 0.000000, -168.299880);
+	AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+3, vehicleid, 0.623635, 2.719873, -0.489997, 197.100002, 0.000000, 168.299880);
+	AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+4, vehicleid, -0.778895, -2.520503, -0.455543, 202.600015, 0.000000, -4.399932);
+	AttachDynamicObjectToVehicle(police_infernus[vehicleid][pi_objects]+5, vehicleid, 0.778895, -2.520503, -0.455543, 202.600015, 0.000000, 4.399932);
 
-    return 1;
+	return 1;
 }
 
 stock DestroyPoliceInfernus(vehicleid)
 {
-    DestroyVehicle(vehicleid);
+	DestroyVehicle(vehicleid);
 
-    DestroyDynamicObject(police_infernus[vehicleid][pi_objects]);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+1);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+2);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+3);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+4);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+5);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_objects]);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+1);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+2);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+3);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+4);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_objects]+5);
 
-    DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+1);
-    DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+2);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+1);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_flashers]+2);
 
-    DestroyDynamicObject(police_infernus[vehicleid][pi_top]);
+	DestroyDynamicObject(police_infernus[vehicleid][pi_top]);
 
-    return 1;
+	return 1;
 }
