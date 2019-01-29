@@ -159,8 +159,6 @@ stock DestroyPoliceInfernus(vehicleid)
 	DestroyDynamicObject(police_infernus[vehicleid][8]);
 	DestroyDynamicObject(police_infernus[vehicleid][9]);
 
-	police_infernus[vehicleid][pi_police] = false;
-
 	return 1;
 }
 
