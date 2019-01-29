@@ -163,22 +163,12 @@ static stock PoliceInfernusToOff(vehicleid)
 stock DestroyPoliceInfernus(vehicleid)
 {
 	DestroyVehicle(vehicleid);
-
-	DestroyDynamicObject(police_infernus[vehicleid][0]);
-	DestroyDynamicObject(police_infernus[vehicleid][1]);
-	DestroyDynamicObject(police_infernus[vehicleid][2]);
-	DestroyDynamicObject(police_infernus[vehicleid][3]);
-	DestroyDynamicObject(police_infernus[vehicleid][4]);
-	DestroyDynamicObject(police_infernus[vehicleid][5]);
-	DestroyDynamicObject(police_infernus[vehicleid][6]);
-	DestroyDynamicObject(police_infernus[vehicleid][7]);
-	DestroyDynamicObject(police_infernus[vehicleid][8]);
-	DestroyDynamicObject(police_infernus[vehicleid][9]);
-	DestroyDynamicObject(police_infernus[vehicleid][10]);
-	DestroyDynamicObject(police_infernus[vehicleid][11]);
-
+	
 	for (new i = 0; i < MAX_INFERNUS_OBJECTS; i++)
+	{
+		DestroyDynamicObject(police_infernus[vehicleid][i]);
 		police_infernus[vehicleid][i] = INVALID_OBJECT_ID;
+	}
 
 	return 1;
 }
