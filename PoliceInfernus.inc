@@ -4,7 +4,7 @@
 #define POLICEINFERNUS
 
 #if !defined INFERNUS
-	#define INFERNUS				411
+	#define INFERNUS		411
 #endif
 
 #if !defined MAX_INFERNUS_OBJECTS
