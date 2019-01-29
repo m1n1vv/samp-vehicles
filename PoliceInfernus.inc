@@ -4,11 +4,15 @@
 #define POLICEINFERNUS
 
 #if !defined INFERNUS
-	#define INFERNUS	411
+	#define INFERNUS		411
+#endif
+
+#if !defined MAX_INFERNUS_OBJECTS
+	#define MAX_INFERNUS_OBJECTS	10
 #endif
 
 static
-	police_infernus[MAX_VEHICLES][10] = {INVALID_OBJECT_ID, ...};
+	police_infernus[MAX_VEHICLES][MAX_INFERNUS_OBJECTS] = {INVALID_OBJECT_ID, ...};
 
 stock CreatePoliceInfernus(Float:x, Float:y, Float:z, Float:a, respawn = 0)
 {
@@ -158,6 +162,9 @@ stock DestroyPoliceInfernus(vehicleid)
 	DestroyDynamicObject(police_infernus[vehicleid][7]);
 	DestroyDynamicObject(police_infernus[vehicleid][8]);
 	DestroyDynamicObject(police_infernus[vehicleid][9]);
+
+	for (new i = 0; i < MAX_INFERNUS_OBJECTS; i++)
+		police_infernus[vehicleid][i] = INVALID_OBJECT_ID;
 
 	return 1;
 }
